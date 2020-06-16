@@ -18,7 +18,7 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
       - [Sharing Data between steps](https://specflow.org/documentation/Sharing-Data-between-Bindings/)
       - Anti-patterns & best practices
 4. **Next steps**
-    - Pratice tips & [Reference]() 
+    - Pratice tips & [Reference](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/master/Content/references.md) 
      [FeedBack for the session](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzkcgooWh0tLpfJnJxlZV4xUNVVDWEU0NzJDRjlMMkJIOUVJRlVGMUowVi4u)
     - Preparing for the next session
 
@@ -26,18 +26,31 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
 
 #### Exercise 1:  Defining Bing Search Scenario with Gherkin
 
-1. Using Gherkin's ``` Given\When\Then ``` Syntax write the following empty and "Hello World" scenarios to validate  
+1. Using Gherkin's ``` Given\When\Then ``` Syntax write the 2 following scenarios to validate 
+    ```Gherkin
+    Feature  "Bing Search engine text search"
+    ```
+    a) Empty text search scenario
+      ```Gherkin
+      Scenario: Empty text Search
+      ``` 
+    b) "Hello Word" text search scenario
+      ```Gherkin
+      Scenario: "Hello Word" text Search
+      ```
 
-  ```Gherkin
-  Feature  "Bing Search engines text search"
+    An example scenario looks as follow:
+    ```Gherkin
+      Feature: Pascal's calculator can perform addition
 
-  Scenario: Empty text Search
-  Scenario: "Hello Word" text Search
-  ``` 
+      Scenario: Adding 2 integers 
 
-a) Empty search 
-b) Hello world 
-
+      Given the calculator has started
+        And 10 was entered 
+        And 20 was entered
+      When selecting the addition operator
+      Then the result should be 30 
+      ```
 
 #### 2. Finding elements with the Web Browser
 
