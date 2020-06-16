@@ -1,35 +1,36 @@
 # Module 2: Front-End Test Automation
 
-Please download or view Module 2's Slide deck [here]()
+Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/master/Content/AutomationTesting-Module2-18th.pdf) Module 2's Slide deck
 
-## Core Concepts
+## Agenda
 
-
-1.  Brief overview of Behaviour Driven Development [BDD](https://cucumber.io/docs/bdd/) 
-    - Gherkin Fundamentals
-
+1.  Brief overview of Behaviour Driven Development ([BDD](https://cucumber.io/docs/bdd/)) 
+    - [Gherkin Fundamentals](https://cucumber.io/docs/gherkin/reference/)
     - Acceptance Testing
+2. Web UI Testing
+    - Anatomy of a web page & accessing DOM elements
+    - Designing Testable Web Pages
+3. SpecFlow Fundamentals
+    - Business stack
+      - Features & Scenarios
+    - Testing stack
+      - Bindings, Step definition & Hooks
+      - Sharing Data between steps 
+      - Anti-patterns & best practices
+
+***
+
+## Exercices:
+
+1. Defining Bing Search Scenario
 
 
-### Exercices:
+***
 
-1) Multiple browser support with just tag placed on scenario like `@browser:firefox,43.0,OS_X,Lion`
-
-  - list of supported capabilities (combination of browser, version, operating system):
-  https://www.browserstack.com/automate/capabilities
-
-
-
-
-### Hands-on Labs:
+## Hands-on Labs:
 
 
 1) 
 
 
-Get it from Nuget.org:
-
-https://www.nuget.org/packages/TestStack.Seleno.BrowserStack.SpecFlowPlugin/
-
-***
 
