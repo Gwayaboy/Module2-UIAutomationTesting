@@ -30,8 +30,11 @@ This exercise doesn't require to install SpecFlow extension or Visual Studio. Th
 We can just use notepad and everyone can share their scenarios on MS Teams meeting chat
 1. An example scenario looks as follow:
     ```Gherkin
-      Feature: Pascal's calculator can perform addition
-
+      Feature: Pascal's calculator can perform arithmetic operations
+        As a User
+        I want to be able to perform arithmetic operations
+        So that I can keep track of my accounts
+        
       Scenario: Adding 2 integers 
 
       Given the calculator has started
