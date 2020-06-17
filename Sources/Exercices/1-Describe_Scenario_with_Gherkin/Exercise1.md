@@ -31,7 +31,7 @@ Please, when writing Gherkin scenarions, keep in mind my these recommendations t
       - Web search
       - Mobile Search
       - Windows Start Bar Search      
-2. Regardless, do no express pre-requisites ([Given] (https://cucumber.io/docs/gherkin/reference/#given)) actions ([When](https://cucumber.io/docs/gherkin/reference/#when)) and  and assertions ([Then](https://cucumber.io/docs/gherkin/reference/#then)) on UI elements such as Pages, Forms, button, links, etc.
+2. Regardless, do no express pre-requisites ([Given](https://cucumber.io/docs/gherkin/reference/#given)) actions ([When](https://cucumber.io/docs/gherkin/reference/#when)) and  and assertions ([Then](https://cucumber.io/docs/gherkin/reference/#then)) on UI elements such as Pages, Forms, button, links, etc.
 
 3. It can be tempting to introduced a steps for the empty search scenario to highlight that the user hasn't typed anything into the search but that will add noise and will result in step defintion that effectively does nothing usefull (unnecessary ode)
 
