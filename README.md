@@ -82,7 +82,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
          </a>
  ![](https://demosta.blob.core.windows.net/images/InspectElementsHighLighted.png)
 
-  3. right client on the html link element above to bring up another contextual menu and select the following menu items to
+  3. right click on the html link element above to bring up another contextual menu and select the following menu items to
       - copy selector to get the css selector to that element as follow
         ```css 
         #vs_cont > div.mc_caro > div > div.headline > div.icon_text > a
