@@ -24,7 +24,7 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
 
 ## Exercices:
 
-#### Exercise 1:  Defining Bing Search Scenario with Gherkin
+  #### Exercise 1: Defining Bing Search Scenario with Gherkin
 
 This exercise doesn't require to install SpecFlow extension or Visual Studio. The outcome is to learn how to write scenarios that focus on functionality rather than UI.
 We can just use notepad and everyone can share their scenarios on MS Teams meeting chat
@@ -63,14 +63,14 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 3. Solution can be found [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md) 
 
 
-#### 2. Finding elements with the Web Browser
+  #### Exercise 2: Finding elements with the Web Browser
 
-  #### 3. Writing UI Automated with Selenium and Pages Objects
+  #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
 ## Hands-on Labs:
 
 
-  #### 1. Implementing a Specflow Bing Search Scenario
+  #### Implementing a Specflow Bing Search Scenario
 
 
 
