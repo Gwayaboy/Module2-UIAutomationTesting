@@ -45,7 +45,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       Then the result should be 30 
       ```
 2. Using Gherkin's ``` Given\When\Then ``` Syntax write the 2 following scenarios to validate 
-    
+
     ```Gherkin
     Feature: Web Bing Search engine text search
         As a User
@@ -57,9 +57,13 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       ```Gherkin
       Scenario: Empty text Search
       ``` 
-    b) "Hello Word" text search scenario
+    b) "Hello Word!" text search scenario
       ```Gherkin
-      Scenario: "Hello Word" text Search
+      Scenario: "Hello Word!" text Search
+      ```
+    c) Current Pin location search scenario
+     ```Gherkin
+      Scenario: Current pin location Search
       ```
 3. Example of Gherkin scenarios and recommendations [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md)
 

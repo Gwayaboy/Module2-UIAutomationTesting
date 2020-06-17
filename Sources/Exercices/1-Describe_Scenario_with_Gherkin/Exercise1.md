@@ -13,13 +13,21 @@ Scenario: Empty Search Text
 
   Given the user navigated to the url "http://bing.com/" 
   When the user submits the search 
+  Then the the URL should remain "http://bing.com/"
+    And the URL should not contains "search?q="
+    And the Page's title should be "Bing"
+
+Scenario: Current Pin location search
+
+  Given the user navigated to the url "http://bing.com/" 
+  When the user submits the search 
   Then the results related to the background's image location should be listed
 
 
 Scenario: "Hello World" Search Text
 
   Given the user navigated to the url "http://bing.com/" 
-    And the user typed "Hello World" 
+    And the user typed "Hello World!" 
   When the user submits the search 
   Then more than 1 result(s) should be listed 
     And one of the result item's title should contain "Hello, World! program - Wikipedia"
@@ -41,7 +49,10 @@ Please, when writing Gherkin scenarions, keep in mind my these recommendations t
       Given the user navigated to the url "http://bing.com/" 
         And the user didn't type anything 
       When the user submits the search 
-      Then the results related to the background's image location should be listed
+      Then the the URL should remain "http://bing.com/"
+        And the URL should not contains "search?q="
+        And the Page's title should be "Bing"
+
     ```
 
   
@@ -63,13 +74,20 @@ Please, when writing Gherkin scenarions, keep in mind my these recommendations t
 
     Scenario: Empty Search Text
 
+    When the user submits the search 
+    Then the the URL should remain "http://bing.com/"
+      And the URL should not contains "search?q="
+      And the Page's title should be "Bing"
+
+    Scenario: Current Pin location search
+
       When the user submits the search 
       Then the results related to the background's image location should be listed
 
 
     Scenario: "Hello World" Search Text
 
-      Given the user typed "Hello World" 
+      Given the user typed "Hello World!" 
       When the user submits the search 
       Then more than 1 result(s) should be listed 
         And one of the result item's title should contain "Hello, World! program - Wikipedia"
