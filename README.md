@@ -205,6 +205,29 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
             Assert.AreEqual(currentLocation, returnedPage.SearchedText);
             ```
           - we need to implement as you guessed ```NumberOfResults``` and ```SearchedText``` property on ```BingSearchResultPage```
+
+      4. Finally we'll finished we are last test scenario
+          ```csharp
+          public void HelloWordSeachFirstResultShouldBeHelloWordProgram() {}
+          ```
+
+          ```BingSearchPage.Search``` and  ```BingSearchResultPage.SearchedText``` should both be already implemented.
+          
+          What's left to do is implement:
+          ```csharp
+          public ResultItem FirstResultItem => throw new NotImplementedException();
+          public ResultItem GetResultItemAt(int index)
+          {
+              throw new NotImplementedException();
+          }
+          ```
+
+          We need to: 
+            - Find the nth-child of some sort of list in the result search page to display the result items. we'll use a 1 based ```li:nth-child({index}``` to find the nth element
+            - Create an instance of ```ResultItem``` with the page's result item title and URL from the ```<a href="{url}">{title}</a>```
+
+
+Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished) branch to see the complete Page implenmentation [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished/Sources/Exercices/2-Selenium_Page_Objects/BingSearchPageObjects/Pages) 
     
 
 ## Hands-on Labs
