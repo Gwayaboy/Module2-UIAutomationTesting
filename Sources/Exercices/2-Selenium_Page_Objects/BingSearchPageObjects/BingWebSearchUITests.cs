@@ -11,7 +11,7 @@ namespace BingSearchPageObjectsLab
         public void EmptySearchShouldReturnSeveralResultsRelatedToBackgroundImageLocation()
         {
             //Arrange
-            var searchPage = GoToInitial<BingSearchPage>("https://bing.com");
+            var searchPage = NavigateTo<BingSearchPage>("https://bing.com");
             var defaultLocationSearchText = searchPage.LocationSearchText;
 
             // Act
@@ -27,7 +27,7 @@ namespace BingSearchPageObjectsLab
         public void HelloWordSeachFirstResultShouldBeHelloWordProgram()
         {
             // Arrange
-            var searchPage = GoToInitial<BingSearchPage>("https://bing.com");
+            var searchPage = NavigateTo<BingSearchPage>("https://bing.com");
 
             // Act
             var resultsPage = searchPage.Search("Hello World!");

@@ -17,7 +17,7 @@ namespace BingSearchPageObjectsLab.Configuration
             _webDriver.Manage().Window.Maximize();
         }
 
-        protected TPage GoToInitial<TPage>(string startUpUrl) where TPage : Page, new()
+        protected TPage NavigateTo<TPage>(string startUpUrl) where TPage : Page, new()
         {
             return Page.GoToInitial<TPage>(startUpUrl, _webDriver);
         }
