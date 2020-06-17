@@ -63,7 +63,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
   #### Exercise 2: Finding elements with the Web Browser
 
-  #### Execise 3: Writing UI Automated with Selenium and Pages Objects
+  #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
 ## Hands-on Labs
 
