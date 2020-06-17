@@ -225,6 +225,9 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
           We need to: 
             - Find the nth-child of some sort of list in the result search page to display the result items. we'll use a 1 based ```li:nth-child({index}``` to find the nth element
             - Create an instance of ```ResultItem``` with the page's result item title and URL from the ```<a href="{url}">{title}</a>```
+
+
+Swich to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished) branch to see the complete solution
       
 ## Hands-on Labs
 
