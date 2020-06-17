@@ -60,7 +60,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       ```Gherkin
       Scenario: "Hello Word" text Search
       ```
-
+3. Solution can be found [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md) 
 
 
 #### 2. Finding elements with the Web Browser
