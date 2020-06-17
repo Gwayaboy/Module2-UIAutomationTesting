@@ -62,7 +62,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       Scenario: "Hello Word" text Search
       ```
 3. Example of Gherkin scenarios and recommendations [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md)
-  
+
   #### Exercise 2: Finding elements with the Web Browser
 
   1. Open Chrome, Firefox or Edge Chromium and navigate to https://bing.com 
@@ -101,7 +101,9 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
  
   #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
-  1. Ensure you have Chrome Web Browser on the machine your using for this exercise.You can [install Chrome here](https://www.google.com/chrome/)
+  1. Ensure you have Chrome Web Browser on the machine your using for this exercise.    
+      - You can [install Chrome here](https://www.google.com/chrome/)
+    
 
 ## Hands-on Labs
 
