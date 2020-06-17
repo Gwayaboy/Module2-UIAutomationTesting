@@ -67,7 +67,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
 ## Hands-on Labs:
 
-  #### Hands-on Labs:  Implementing a Specflow Bing Search Scenario
+  #### Implementing a Specflow Bing Search Scenario
 
 
 
