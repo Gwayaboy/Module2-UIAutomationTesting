@@ -70,7 +70,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
   1. Open Chrome, Firefox or Edge Chromium and navigate to https://bing.com 
 
-  ![](https://demosta.blob.core.windows.net/images/BingLandingPage.PNG)
+        ![](https://demosta.blob.core.windows.net/images/BingLandingPage.PNG)
 
   2. At the bottom right corner, right click on location pin button pointing at the location of the background image and 
 
@@ -127,13 +127,14 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
         ```
         /Sources/Exercices/2-Selenium_Page_Objects/BingSearchPageObjects.sln
         ```
-  4. The plumbing code should be written to allow to execute a 3 failing non implemented tests on Chrome
+  4. The plumbing code should be written to allow to execute 3 failing non implemented tests on Chrome
       - Build the solution in Visual Studio
       - Run all the test using the Test Explorer then should start a instance of your Chrome Web Browser and fail because the pages methods and property are not yet implemented
 
         ![](https://demosta.blob.core.windows.net/images/FailingTests.PNG)
 
-  5. Let's get started with the simplest scenario and read through the expected behaviour of the test method
+  5. Let's implements these 3 test scenarions
+      1. First get started with the simplest scenario and read through the expected behaviour of the test method
       ```csharp
         [TestMethod]
         public void EmptySearchShouldNotTriggerAnySearch()
@@ -150,9 +151,52 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
         }
       ```
 
-      - let's implement the Search method in our ``` BingSearchPage ``` by navigating to its definition by pressing F12
+      2. Let's implement the Search method in our ```BingSearchPage``` by navigating to its definition by pressing F12 which should look like:
+          ```csharp 
+          public BingSearchResultPage Search(string textToSearch = "")
+          {
+              throw new NotImplementedException();
+          }
+          ```
+          We need in a nutshell to
+            - using ```FindElement``` utility method from the base ```Page class```  the  find the text input element using Chrome to get its CSS or XPath selector.
+            - send the search text 
+            - find the form  which the input seach text belongs and submit it
+            - use the base Page class ```GoTo``` utility method to return a strongly typed ```BingSearchResultPage``` to look something like
+              
+              ```csharp
+              FindElement(By.Id("{searchInputId}")).SendKeys(textToSearch)
+              return GoTo<BingSearchResultPage>(By.Id("{formId}"), e => e.Submit());
+
+              ```
+              once you've replaced  ```{searchInputId} ``` and  ```{formId} ``` placeholders by the ids you found using the chrome browser to explore these DOM elements, run the test and **see whether it passes** 
+          
+      3. Next we'll implemenent our next scenario
+          ```csharp
+          public void SelectingTheLocationPinShouldSearchAndReturnSeveralResultsRelatedToLocation()
+          ```
+          We need in a to
+          - implement in the ```BingSearchResultPage``` the  property  
+            ```csharp
+            public string CurrentPinLocation 
+            ```
+            which reads the landing page's current location that will be used for validating the search
+          - and the method 
+            ```csharp
+            public BingSearchResultPage SelectCurrentPinLocation() { }
+            ```
+            which selects and clicks on current location pin link
+
+          - Similary we need to find the ```<a href="">``` HTML element using the Chrome's inspect element and copy selector options in the contextual menu to retrieve the location, retrieve the string that will be used to search (we'd need to do a bit of string manipulation)
+          - With the same selector find the link and click on it to navigate to out  ```BingSearchResultPage``` like we did for 
+          ```csharp
+          BingSearchResultPage Search(string textToSearch = "")
+          ```
+
       
 ## Hands-on Labs
+
+
 
   #### Implementing a Specflow Bing Search Scenario
 
