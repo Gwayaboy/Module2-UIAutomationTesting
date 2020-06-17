@@ -84,7 +84,8 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
             </svg>
           </div>
          </a>
- ![](https://demosta.blob.core.windows.net/images/InspectElementsHighLighted.png)
+        
+        ![](https://demosta.blob.core.windows.net/images/InspectElementsHighLighted.png)
 
   3. right click on the html link element above to bring up another contextual menu and select the following menu items to
       - copy selector to get the css selector to that element as follow
@@ -100,14 +101,57 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
         document.querySelector("#vs_cont > div.mc_caro > div > div.headline > div.icon_text > a")
         ```
 
- ![](https://demosta.blob.core.windows.net/images/TypeOfLocators.PNG)
+        ![](https://demosta.blob.core.windows.net/images/TypeOfLocators.PNG)
  
   #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
    1. Ensure you have Chrome Web Browser on the machine your using for this exercise.    
       - You can [install Chrome here](https://www.google.com/chrome/)
-   2. 
+   2. Clone [this repository to get started](https://github.com/Gwayaboy/Module2-UIAutomationTesting) following the instructions below:
 
+      ![](https://demosta.blob.core.windows.net/images/CloneRepoToGetStarted.png)
+
+      - Click on the "Clone or download" button
+      - Clone the repository direclty into Visual studio
+        
+        or
+      - Copy the git repository url and execute the command:
+        ```bash
+        git clone https://github.com/Gwayaboy/Module2-UIAutomationTesting.git
+        ```
+
+        or  
+      - Download as a zip file to your local drive 
+         
+  3. Once you a copy in your local drive open the solution at
+        ```
+        /Sources/Exercices/2-Selenium_Page_Objects/BingSearchPageObjects.sln
+        ```
+  4. The plumbing code should be written to allow to execute a 3 failing non implemented tests on Chrome
+      - Build the solution in Visual Studio
+      - Run all the test using the Test Explorer then should start a instance of your Chrome Web Browser and fail because the pages methods and property are not yet implemented
+
+        ![](https://demosta.blob.core.windows.net/images/FailingTests.PNG)
+
+  5. Let's get started with the simplest scenario and read through the expected behaviour of the test method
+      ```csharp
+        [TestMethod]
+        public void EmptySearchShouldNotTriggerAnySearch()
+        {
+            //Arrange
+            var searchPage = NavigateTo<BingSearchPage>("https://bing.com");
+
+            // Act
+            var returnedPage = searchPage.Search();
+
+            // Assertions
+            Assert.AreEqual("Bing",returnedPage.Title);
+            Assert.IsFalse(returnedPage.Url.Contains("search?q="));
+        }
+      ```
+
+      - let's implement the Search method in our ``` BingSearchPage ``` by navigating to its definition by pressing F12
+      
 ## Hands-on Labs
 
   #### Implementing a Specflow Bing Search Scenario
