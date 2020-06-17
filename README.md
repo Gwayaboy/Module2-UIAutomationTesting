@@ -45,7 +45,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       Then the result should be 30 
       ```
 2. Using Gherkin's ``` Given\When\Then ``` Syntax write the 2 following scenarios to validate 
-    _
+
     ```Gherkin
     Feature: Web Bing Search engine text search
         As a User
@@ -57,9 +57,13 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       ```Gherkin
       Scenario: Empty text Search
       ``` 
-    b) "Hello Word" text search scenario
+    b) "Hello Word!" text search scenario
       ```Gherkin
-      Scenario: "Hello Word" text Search
+      Scenario: "Hello Word!" text Search
+      ```
+    c) Current Pin location search scenario
+     ```Gherkin
+      Scenario: Current pin location Search
       ```
 
   #### Exercise 2: Finding elements with the Web Browser
