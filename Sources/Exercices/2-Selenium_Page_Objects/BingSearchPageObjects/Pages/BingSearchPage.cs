@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,30 @@ namespace BingSearchPageObjectsLab.Pages
 {
     public class BingSearchPage : Page
     {
-        public string LocationSearchText => throw new NotImplementedException();
+        private const string currentLocationPinLinkSelector = "#vs_cont > div.mc_caro > div > div.headline > div.icon_text > a";
 
-        public BingSearchResultPage Search(string textToSearch = null)
+        public string CurrentPinLocation
         {
-            throw new NotImplementedException();
+            get
+            {
+                var href = FindElement(By.CssSelector(currentLocationPinLinkSelector)).GetAttribute("href");
+                var start = href.IndexOf("search?q=") + 9;
+                var length = href.IndexOf('&') - start;
+
+                return href.Substring(start, length).Replace('+', ' '); ;
+            }
+        }
+
+        public BingSearchResultPage Search(string textToSearch = "")
+        {
+            FindElement(By.Id("sb_form_q")).SendKeys(textToSearch);
+
+            return GoTo<BingSearchResultPage>(By.Id("sb_form"), form => form.Submit());
+        }
+
+        public BingSearchResultPage SelectCurrentPinLocation()
+        {
+            return GoTo<BingSearchResultPage>(By.CssSelector(currentLocationPinLinkSelector));
         }
     }
 }

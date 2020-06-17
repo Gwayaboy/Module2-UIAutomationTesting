@@ -1,5 +1,6 @@
 ﻿using BingSearchPageObjectsLab.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,13 @@ using System.Threading.Tasks;
 namespace BingSearchPageObjectsLab.Pages
 {
 
-    public abstract class Page : IDisposable
-    {
+    public abstract class Page
+    { 
         protected IWebDriver WebDriver { get; private set; }
 
-        public string Title => WebDriver.Title;
+        public const int DefaultSecondTimeout = 60;
+
+        public string Title => WaitUntil(d => d.Title);
 
         public string Url => WebDriver.Url;
 
@@ -21,15 +24,34 @@ namespace BingSearchPageObjectsLab.Pages
            where TPage : Page, new()
         {
             var action = performAction ?? (e => e.Click());
-            action(WebDriver.FindElement(byLocator));
+            action(FindElement(byLocator));
 
             return new TPage { WebDriver = WebDriver };
         }
 
-        internal static TPage GoToInitial<TPage>(string startUpUrl, Func<IWebDriver> webDriverFactory = null)
+        protected IWebElement FindElement(By byLocator, TimeSpan maxWait = default(TimeSpan))
+        {
+            try
+            {
+                return WaitUntil(d => d.FindElement(byLocator));
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                throw e.InnerException;
+            }
+        }
+
+        protected void ExecuteScript(string scriptToExecute)
+        {
+            var javascriptExecutor = (IJavaScriptExecutor)WebDriver;
+
+            var untypedValue = javascriptExecutor.ExecuteScript(scriptToExecute);
+
+        }
+
+        internal static TPage GoToInitial<TPage>(string startUpUrl, IWebDriver webDriver)
                 where TPage : Page, new()
         {
-            var webDriver = (webDriverFactory ?? BrowserFactory.Chrome).Invoke();
             if (webDriver == null) throw new ApplicationException("Please provide with an instance of web driver to proceed");
             if (string.IsNullOrWhiteSpace(startUpUrl)) throw new ApplicationException("Please provide with a start up url");
 
@@ -38,36 +60,14 @@ namespace BingSearchPageObjectsLab.Pages
             return new TPage { WebDriver = webDriver };
         }
 
-        #region IDisposable Support
-
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
+        private TReturn WaitUntil<TReturn>(Func<IWebDriver, TReturn> elementFinder, TimeSpan maxWait = default(TimeSpan))
         {
-            if (!disposedValue)
+            if (maxWait == default)
             {
-                if (disposing)
-                {
-                    if (WebDriver != null)
-                    {
-                        WebDriver.Quit();
-                        WebDriver.Dispose();
-                        WebDriver = null;
-                    }
-                }
-                disposedValue = true;
+                maxWait = TimeSpan.FromSeconds(DefaultSecondTimeout);
             }
+            var wait = new WebDriverWait(WebDriver, maxWait);
+            return wait.Until(elementFinder);
         }
-
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            Dispose(true);
-        }
-
-        #endregion
-
-
     }
 }

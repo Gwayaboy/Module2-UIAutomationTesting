@@ -1,19 +1,26 @@
 ﻿using BingSearchPageObjectsLab.ViewModel;
+using OpenQA.Selenium;
 using System;
 
 namespace BingSearchPageObjectsLab.Pages
 {
     public class BingSearchResultPage : Page
     {
-        public int NumberOfResults => throw new NotImplementedException();
+        public long NumberOfResults => 
+            long.Parse(FindElement(By.CssSelector("#b_tween > span.sb_count"))
+                        .Text
+                        .Replace("Results", string.Empty)
+                        .Replace(",", string.Empty));
 
-        public string SearchedText => throw new NotImplementedException();
+        public string SearchedText => FindElement(By.Id("sb_form_q")).GetAttribute("value");
 
-        public ResultItem FirstResultItem => GetResultItemAt(0);
+        public ResultItem FirstResultItem => GetResultItemAt(1);
 
-        public ResultItem GetResultItemAt(int index = 0)
+        public ResultItem GetResultItemAt(int index)
         {
-            throw new NotImplementedException();
+            var resulItemLink = FindElement(By.CssSelector($"#b_results > li:nth-child({index}) a"));
+
+            return new ResultItem(resulItemLink.Text, resulItemLink.GetAttribute("href"));
         }
     }
 }

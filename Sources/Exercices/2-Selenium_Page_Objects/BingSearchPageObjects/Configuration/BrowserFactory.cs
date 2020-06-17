@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using System;
 using System.IO;
 
@@ -15,6 +16,14 @@ namespace BingSearchPageObjectsLab.Configuration
             var directory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Directory.GetCurrentDirectory();
 
             return new ChromeDriver(directory, options);
+        }
+
+        public static IWebDriver EdgeChromium()
+        {
+            var options = new EdgeOptions();
+            options.UseChromium = true;
+
+            return new EdgeDriver(options);
         }
     }
 }
