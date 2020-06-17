@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BingSearchPageObjectsLab.Pages
 {
 
-    public abstract class Page
+    public abstract class Page : IDisposable
     {
         protected IWebDriver WebDriver { get; private set; }
 
@@ -38,6 +38,35 @@ namespace BingSearchPageObjectsLab.Pages
             return new TPage { WebDriver = webDriver };
         }
 
+        #region IDisposable Support
+
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (WebDriver != null)
+                    {
+                        WebDriver.Quit();
+                        WebDriver.Dispose();
+                        WebDriver = null;
+                    }
+                }
+                disposedValue = true;
+            }
+        }
+
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        #endregion
 
 
     }

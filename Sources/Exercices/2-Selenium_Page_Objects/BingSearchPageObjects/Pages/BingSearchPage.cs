@@ -8,7 +8,9 @@ namespace BingSearchPageObjectsLab.Pages
 {
     public class BingSearchPage : Page
     {
-        public BingSearchResultPage Search(string textToSearch)
+        public string LocationSearchText => throw new NotImplementedException();
+
+        public BingSearchResultPage Search(string textToSearch = null)
         {
             throw new NotImplementedException();
         }

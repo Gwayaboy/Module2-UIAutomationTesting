@@ -58,6 +58,7 @@
     <Compile Include="Configuration\BrowserFactory.cs" />
     <Compile Include="Pages\Page.cs" />
     <Compile Include="BingWebSearchUITests.cs" />
+    <Compile Include="ViewModel\ResultItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
