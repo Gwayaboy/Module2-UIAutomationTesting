@@ -227,7 +227,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
             - Create an instance of ```ResultItem``` with the page's result item title and URL from the ```<a href="{url}">{title}</a>```
 
 
-Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished) branch to see the complete solution
+Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished) branch to see the complete Page implenmentation [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/tree/Finished/Sources/Exercices/2-Selenium_Page_Objects/BingSearchPageObjects/Pages) 
       
 ## Hands-on Labs
 
