@@ -1,18 +1,17 @@
-﻿using System;
-using BingSearchPageObjectsLab.Configuration;
+﻿using BingSearchPageObjectsLab.Configuration;
 using BingSearchPageObjectsLab.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BingSearchPageObjectsLab
 {
     [TestClass]
-    public class BingWebSearchUITests
+    public class BingWebSearchUITests : WebUISpecs
     {
         [TestMethod]
         public void EmptySearchShouldReturnSeveralResultsRelatedToBackgroundImageLocation()
         {
             //Arrange
-            var searchPage = Page.GoToInitial<BingSearchPage>("https://bing.com");
+            var searchPage = GoToInitial<BingSearchPage>("https://bing.com");
             var defaultLocationSearchText = searchPage.LocationSearchText;
 
             // Act
@@ -28,7 +27,7 @@ namespace BingSearchPageObjectsLab
         public void HelloWordSeachFirstResultShouldBeHelloWordProgram()
         {
             // Arrange
-            var searchPage = Page.GoToInitial<BingSearchPage>("https://bing.com");
+            var searchPage = GoToInitial<BingSearchPage>("https://bing.com");
 
             // Act
             var resultsPage = searchPage.Search("Hello World!");

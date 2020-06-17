@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 namespace BingSearchPageObjectsLab.Pages
 {
 
-    public abstract class Page : IDisposable
-    {
+    public abstract class Page
+    { 
+        
         protected IWebDriver WebDriver { get; private set; }
 
         public string Title => WebDriver.Title;
@@ -26,10 +27,9 @@ namespace BingSearchPageObjectsLab.Pages
             return new TPage { WebDriver = WebDriver };
         }
 
-        internal static TPage GoToInitial<TPage>(string startUpUrl, Func<IWebDriver> webDriverFactory = null)
+        internal static TPage GoToInitial<TPage>(string startUpUrl, IWebDriver webDriver)
                 where TPage : Page, new()
         {
-            var webDriver = (webDriverFactory ?? BrowserFactory.Chrome).Invoke();
             if (webDriver == null) throw new ApplicationException("Please provide with an instance of web driver to proceed");
             if (string.IsNullOrWhiteSpace(startUpUrl)) throw new ApplicationException("Please provide with a start up url");
 
@@ -37,37 +37,5 @@ namespace BingSearchPageObjectsLab.Pages
 
             return new TPage { WebDriver = webDriver };
         }
-
-        #region IDisposable Support
-
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    if (WebDriver != null)
-                    {
-                        WebDriver.Quit();
-                        WebDriver.Dispose();
-                        WebDriver = null;
-                    }
-                }
-                disposedValue = true;
-            }
-        }
-
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            Dispose(true);
-        }
-
-        #endregion
-
-
     }
 }

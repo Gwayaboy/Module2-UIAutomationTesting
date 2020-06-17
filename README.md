@@ -100,6 +100,10 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
  
   #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
+   1. Ensure you have Chrome Web Browser on the machine your using for this exercise.    
+      - You can [install Chrome here](https://www.google.com/chrome/)
+   2. 
+
 ## Hands-on Labs
 
   #### Implementing a Specflow Bing Search Scenario
