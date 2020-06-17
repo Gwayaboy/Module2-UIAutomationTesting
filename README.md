@@ -107,7 +107,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
    1. Ensure you have Chrome Web Browser on the machine your using for this exercise.    
       - You can [install Chrome here](https://www.google.com/chrome/)
-   2. Clone [this repository to get started](https://github.com/Gwayaboy/Module2-UIAutomationTesting) following the instructions below:
+   2. Clone this repository to get started at ![https://github.com/Gwayaboy/Module2-UIAutomationTesting.git](https://github.com/Gwayaboy/Module2-UIAutomationTesting.git) following the instructions below:
 
       ![](https://demosta.blob.core.windows.net/images/CloneRepoToGetStarted.png)
 
@@ -175,7 +175,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
           ```csharp
           public void SelectingTheLocationPinShouldSearchAndReturnSeveralResultsRelatedToLocation()
           ```
-          We need in a to
+          We need to
           - implement in the ```BingSearchResultPage``` the  property  
             ```csharp
             public string CurrentPinLocation 
@@ -188,11 +188,23 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
             which selects and clicks on current location pin link
 
           - Similary we need to find the ```<a href="">``` HTML element using the Chrome's inspect element and copy selector options in the contextual menu to retrieve the location, retrieve the string that will be used to search (we'd need to do a bit of string manipulation)
-          - With the same selector find the link and click on it to navigate to out  ```BingSearchResultPage``` like we did for 
-          ```csharp
-          BingSearchResultPage Search(string textToSearch = "")
-          ```
+          - With the same ```FindElement``` method you can find the link and click on it to navigate to  ```BingSearchResultPage``` with ```GoTo```  like we did for 
+              ```csharp
+              BingSearchResultPage Search(string textToSearch = "")
+              ```
 
+          - **Tip**: to read a DOM Element attribute you'll need Selnium's ```GetAttribute()``` 
+          method. This would look like:
+              ```csharp
+              var href = FindElement(By.CssSelector(currentLocationPinLinkSelector)).GetAttribute("href");
+              ```
+          For our assertions 
+            
+            ```csharp
+            Assert.IsTrue(returnedPage.NumberOfResults > 1);
+            Assert.AreEqual(currentLocation, returnedPage.SearchedText);
+            ```
+          - we need to implement as you guessed ```NumberOfResults``` and ```SearchedText``` property on ```BingSearchResultPage```
       
 ## Hands-on Labs
 
