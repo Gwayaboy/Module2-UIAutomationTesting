@@ -28,6 +28,7 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
 
 This exercise doesn't require to install SpecFlow extension or Visual Studio. The outcome is to learn how to write scenarios that focus on functionality rather than UI.
 We can just use notepad and everyone can share their scenarios on MS Teams meeting chat
+![MS Team Chat Gherkin scenario](https://demosta.blob.core.windows.net/images/MSTeamChatGherkin.PNG)
 1. An example scenario looks as follow:
     ```Gherkin
       Feature: Pascal's calculator can perform arithmetic operations
@@ -44,7 +45,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       Then the result should be 30 
       ```
 2. Using Gherkin's ``` Given\When\Then ``` Syntax write the 2 following scenarios to validate 
-    _
+    
     ```Gherkin
     Feature: Web Bing Search engine text search
         As a User
@@ -60,9 +61,8 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
       ```Gherkin
       Scenario: "Hello Word" text Search
       ```
-3. Solution can be found [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md) 
-
-
+3. Example of Gherkin scenarios and recommendations [here](https://github.com/Gwayaboy/Module2-UIAutomationTesting/blob/Finished/Sources/Exercices/1-Describe_Scenario_with_Gherkin/Exercise1.md)
+  
   #### Exercise 2: Finding elements with the Web Browser
 
   1. Open Chrome, Firefox or Edge Chromium and navigate to https://bing.com 
@@ -98,8 +98,10 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
         ```
 
  ![](https://demosta.blob.core.windows.net/images/TypeOfLocators.PNG)
-
+ 
   #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
+
+  1. Ensure you have Chrome Web Browser on the machine your using for this exercise.You can [install Chrome here](https://www.google.com/chrome/)
 
 ## Hands-on Labs
 
