@@ -68,7 +68,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
   ![](https://demosta.blob.core.windows.net/images/BingLandingPage.PNG)
 
-  2. At the bottom right corner, right click on location pin button pointing at the location of the background image and follow the steps  
+  2. At the bottom right corner, right click on location pin button pointing at the location of the background image and 
 
        - Select the inspect item in the contextual menu
        - Locate the link that would look like:
