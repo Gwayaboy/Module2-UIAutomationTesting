@@ -22,7 +22,7 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
     - [FeedBack for the session](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzkcgooWh0tLpfJnJxlZV4xUNVVDWEU0NzJDRjlMMkJIOUVJRlVGMUowVi4u)
     - Preparing for the next session
 
-## Exercices:
+## Exercices
 
   #### Exercise 1: Defining Bing Search Scenario with Gherkin
 
@@ -67,8 +67,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
   #### Exercise 3: Writing UI Automated with Selenium and Pages Objects
 
-## Hands-on Labs:
-
+## Hands-on Labs
 
   #### Implementing a Specflow Bing Search Scenario
 
