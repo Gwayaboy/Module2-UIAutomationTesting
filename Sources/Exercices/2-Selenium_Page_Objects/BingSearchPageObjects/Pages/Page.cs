@@ -1,5 +1,6 @@
 ﻿using BingSearchPageObjectsLab.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,33 @@ namespace BingSearchPageObjectsLab.Pages
 
     public abstract class Page
     { 
-        
         protected IWebDriver WebDriver { get; private set; }
 
-        public string Title => WebDriver.Title;
+        public const int DefaultSecondTimeout = 60;
 
-        public string Url => WebDriver.Url;
+        public string Title => WaitUntil(d => d.Title);
+
+        public string Url => WaitUntil(d => d.Url);
 
         protected TPage GoTo<TPage>(By byLocator, Action<IWebElement> performAction = null)
            where TPage : Page, new()
         {
             var action = performAction ?? (e => e.Click());
-            action(WebDriver.FindElement(byLocator));
+            action(FindElement(byLocator));
 
             return new TPage { WebDriver = WebDriver };
+        }
+
+        protected IWebElement FindElement(By byLocator, TimeSpan maxWait = default(TimeSpan))
+        {
+            try
+            {
+                return WaitUntil(d => d.FindElement(byLocator));
+            }
+            catch (WebDriverTimeoutException e)
+            {
+                throw e.InnerException;
+            }
         }
 
         internal static TPage GoToInitial<TPage>(string startUpUrl, IWebDriver webDriver)
@@ -36,6 +50,16 @@ namespace BingSearchPageObjectsLab.Pages
             webDriver.Navigate().GoToUrl(startUpUrl);
 
             return new TPage { WebDriver = webDriver };
+        }
+
+        private TReturn WaitUntil<TReturn>(Func<IWebDriver, TReturn> elementFinder, TimeSpan maxWait = default(TimeSpan))
+        {
+            if (maxWait == default)
+            {
+                maxWait = TimeSpan.FromSeconds(DefaultSecondTimeout);
+            }
+            var wait = new WebDriverWait(WebDriver, maxWait);
+            return wait.Until(elementFinder);
         }
     }
 }
