@@ -34,7 +34,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
         As a User
         I want to be able to perform arithmetic operations
         So that I can keep track of my accounts
-        
+
       Scenario: Adding 2 integers 
 
       Given the calculator has started
@@ -46,10 +46,10 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 2. Using Gherkin's ``` Given\When\Then ``` Syntax write the 2 following scenarios to validate 
     _
     ```Gherkin
-    Feature: Bing Search engine text search
+    Feature: Web Bing Search engine text search
         As a User
-        I want to be able to perform search on the web
-        So that I can find the information easily
+        I want to be able to perform searches
+        So that I can find the information I need easily
     ```
     
     a) Empty text search scenario
