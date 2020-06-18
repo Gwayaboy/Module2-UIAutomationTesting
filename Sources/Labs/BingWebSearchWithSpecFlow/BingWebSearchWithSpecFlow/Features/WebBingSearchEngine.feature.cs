@@ -97,7 +97,7 @@ namespace BingWebSearchWithSpecFlow.Features
 #line 6
 #line hidden
 #line 7
-  testRunner.Given("the user navigated to the url \"http://bing.com/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("the user navigated to the url \"https://www.bing.com/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         
@@ -135,7 +135,7 @@ this.FeatureBackground();
 testRunner.When("the user submits the search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
-testRunner.Then("the the URL should remain \"http://bing.com/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("the the URL should remain \"https://www.bing.com/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 13
   testRunner.And("the URL should not contains \"search?q=\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -178,7 +178,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 18
-  testRunner.When("the user submits the search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("the user select the current pin location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
   testRunner.Then("the results related to the background\'s image location should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -227,8 +227,8 @@ this.FeatureBackground();
   testRunner.Then("more than 1 result(s) should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 27
-    testRunner.And("one of the result item\'s title should contain \"Hello, World! program - Wikipedia\"" +
-                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("the 1st result item\'s title and url should contain \"\"Hello, World!\" program - Wik" +
+                        "ipedia\" and \"https://en.wikipedia.org/wiki/%22Hello,_World!%22_program\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
