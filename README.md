@@ -241,9 +241,9 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
       - Mark the extension for installation which will kick once  Visual studio is closed
       - Alternatively you can install the browse, [download](https://marketplace.visualstudio.com/items?itemName=TechTalkSpecFlowTeam.SpecFlowForVisualStudio) and install extension from the market place   
   2. Since we've cloned (or downloaded as a zip) this entire repository we should then have a local copy of the starting SpecFlow solution to be implemented at  ```\Sources\Labs\BingWebSearchWithSpecFlow\BingWebSearchWithSpecFlow.sln``` 
-      - Go ahead an open the ```BingWebSearchWithSpecFlow.sln``` solution 
+      1. Go ahead an open the ```BingWebSearchWithSpecFlow.sln``` solution 
     
-      - Open the WebBingSearchEngine.feature file to see the feature and scenarios we are going to implement:
+      2. Open the WebBingSearchEngine.feature file to see the feature and scenarios we are going to implement:
       ```Gherkin
       Feature: Web Bing Search engine text search
           As a User
@@ -273,34 +273,35 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
         Then more than 1 result(s) should be listed 
           And the 1st result item's title and url should contain ""Hello, World!" program - Wikipedia" and "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program"
       ```
-     - Build and run all tests from the TestExplorer and see Chrome browser start and stop for each and of the scenario, they should all fail for not being yet implementent
-     - We have the necessary plumbing and Page Objects to start implementing the steps. Open the ```WebBingSearchEngineTextSearchSteps.cs``` step class:
-      ```csharp
-      [Binding]
-      public class WebBingSearchEngineTextSearchSteps : Steps
-      {
-          public WebBingSearchEngineTextSearchSteps(IObjectContainer container) 
-              : base(container, BrowserFactory.Chrome)
-          { }
+     3. Build and run all tests from the TestExplorer and see Chrome browser start and stop for each and of the scenario, they should all fail for not being yet implementent
+     
+     4. We have the necessary plumbing and Page Objects to start implementing the steps. Open the ```WebBingSearchEngineTextSearchSteps.cs``` step class:
+        ```csharp
+        [Binding]
+        public class WebBingSearchEngineTextSearchSteps : Steps
+        {
+            public WebBingSearchEngineTextSearchSteps(IObjectContainer container) 
+                : base(container, BrowserFactory.Chrome)
+            { }
 
-          [Given(@"the user navigated to the url ""(.*)""")]
-          public void GivenTheUserNavigatedToTheUrl(string url)
-          {
-              NotImplemented();
-          }
-          
-          [Given(@"the user typed ""(.*)""")]
-          public void GivenTheUserTyped(string searchText)
-          {
-              NotImplemented();
-          }
+            [Given(@"the user navigated to the url ""(.*)""")]
+            public void GivenTheUserNavigatedToTheUrl(string url)
+            {
+                NotImplemented();
+            }
+            
+            [Given(@"the user typed ""(.*)""")]
+            public void GivenTheUserTyped(string searchText)
+            {
+                NotImplemented();
+            }
 
-          // More generated steps
-      }
-      ```
-      - All the steps have been generated and bound and the base ```Steps class```  is providing with utitily method to manage WebDriver creation and Page navigation
+            // More generated steps
+        }
+        ```
+        - All the steps have been generated and bound and the base ```Steps class```  is providing with utitily method to manage WebDriver creation and Page navigation
 
-      - Our first and easiest step to implement is getting the Browser to navigate to the Bing Search landing page given url defined in the scenario as 
+        - Our first and easiest step to implement is getting the Browser to navigate to the Bing Search landing page given url defined in the scenario as 
         ```Gherkin
         Background: 
           Given the user navigated to the url "https://www.bing.com/" 
@@ -316,64 +317,66 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
           ```csharp
           private BingSearchPage SearchPage { get; set; }
           ```
-      - Implement the Subsequent steps using the ``SearchPage`` property or field to act on the page for example:
-        ```csharp
-        [Given(@"the user typed ""(.*)""")]
-        public void GivenTheUserTyped(string searchText)
-        {
-            SearchPage.TypeSearchText(searchText);
-        } 
-        ``` 
 
-      - Any steps that require navigating to another page from ``SearchPage`` to ``SearchResultPage`` will need as previous to store the new page into a property of class field, for example:
-        ```csharp
-        [When(@"the user submits the search")]
-        public void WhenTheUserSubmitsTheSearch()
-        {
-            ResultPage = SearchPage.Search();
-        }
-        ``` 
+      5. Implement the Subsequent steps using the ``SearchPage`` property or field to act on the page for example:
+          ```csharp
+          [Given(@"the user typed ""(.*)""")]
+          public void GivenTheUserTyped(string searchText)
+          {
+              SearchPage.TypeSearchText(searchText);
+          } 
+          ``` 
 
-      - We've seen in our previous exercise how logical assertions (assertion that verify the same logical concept such as search result itenm's components). 
+          - Any steps that require navigating to another page from ``SearchPage`` to ``SearchResultPage`` will need as previous to store the new page into a property of class field, for example:
+            ```csharp
+            [When(@"the user submits the search")]
+            public void WhenTheUserSubmitsTheSearch()
+            {
+                ResultPage = SearchPage.Search();
+            }
+            ``` 
+
+      6. We've seen in our previous exercise how logical assertions (assertion that verify the same logical concept such as search result itenm's components). 
         
-          We're using an open source framework [FluentAssertions](https://fluentassertions.com/introduction) to take that responsability away and reduce noise while making very clear what we are asserting while providing meaningful error messages in case some assertions in our ``Then`` steps doesn't hold true.
+         - We're using an open source framework [FluentAssertions](https://fluentassertions.com/introduction) to take that responsability away and reduce noise while making very clear what we are asserting while providing meaningful error messages in case some assertions in our ``Then`` steps doesn't hold true.
 
-          The plumbing code to introduce custom assertions and taking full avantage of the framework is already written for us.
+         - The plumbing code to introduce custom assertions and taking full avantage of the framework is already written for us.
           The idea is that when we write something like ``ResultPage.Should().`` VisualStudio IDE will help us to discover while editing what assertions we can use for our ``Then`` steps thanks to  [FluentAssertions](https://fluentassertions.com/introduction)'s API
 
-          Let's explore a few example to get us started.  the example below verify that we have staged on the same page by checking its url
-          ```csharp
-          [Then(@"the the URL should remain ""(.*)""")]
-          public void ThenTheTheURLShouldRemain(string url)
-          {
-              ResultPage.Should().HaveUrlStartingWith(url);
-          }
-          ```
+          1. Let's explore a few example to get us started.  the example below verify that we have staged on the same page by checking its url
+              ```csharp
+              [Then(@"the the URL should remain ""(.*)""")]
+              public void ThenTheTheURLShouldRemain(string url)
+              {
+                  ResultPage.Should().HaveUrlStartingWith(url);
+              }
+              ```
 
-        1. Further, we want to assert that the title of the page is still the same although we triggered an empty search and our Page Object seems to be pointing to a different (logical) page.
+          2. Further, we want to assert that the title of the page is still the same although we triggered an empty search and our Page Object seems to be pointing to a different (logical) page.
 
-            ```csharp
-            [Then(@"the Page's title should be ""(.*)""")]
-            public void ThenThePageSTitleShouldBe(string expectedTitle)
-            {
-                ResultPage.Should().Be<BingSearchResultPage>(expectedTitle);
-            }
+              ```csharp
+              [Then(@"the Page's title should be ""(.*)""")]
+              public void ThenThePageSTitleShouldBe(string expectedTitle)
+              {
+                  ResultPage.Should().Be<BingSearchResultPage>(expectedTitle);
+              }
+              ```
+
+          3. Let's implement the remaining assertions:
+              ```csharp
+              [Then(@"the URL should not contains ""(.*)""")]
+              public void ThenTheURLShouldNotContains(string urlPath) { }
+
+              [Then(@"more than (.*) result\(s\) should be listed")] 
+              public void ThenMoreThanOneResultsShouldBeListed(int minimumNumberResults) { }
+
+              [Then(@"the (.*) result item's title and url should contain ""(.*)"" and ""(.*)""")]
+              public void ThenTheStResultItemSTitleAndUrlShouldContainAnd(int index, string itemResultTitle, string itemResultUrl) { }
+
+              [Then(@"the results related to the background's image location should be listed")]
+              public void ThenTheResultsRelatedToTheBackgroundSImageLocationShouldBeListed() { }
             ```
-
-        2. Let's implement the remaining assertions:
-            ```csharp
-            [Then(@"the URL should not contains ""(.*)""")]
-            public void ThenTheURLShouldNotContains(string urlPath) { }
-
-            [Then(@"more than (.*) result\(s\) should be listed")] 
-            public void ThenMoreThanOneResultsShouldBeListed(int minimumNumberResults) { }
-
-            [Then(@"the (.*) result item's title and url should contain ""(.*)"" and ""(.*)""")]
-            public void ThenTheStResultItemSTitleAndUrlShouldContainAnd(int index, string itemResultTitle, string itemResultUrl) { }
-
-            [Then(@"the results related to the background's image location should be listed")]
-            public void ThenTheResultsRelatedToTheBackgroundSImageLocationShouldBeListed() { }
-          ```
+      7. Finally we can build and run our test to validate our test scrips works. 
 
  
 
