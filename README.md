@@ -350,17 +350,17 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
           }
           ```
 
-          Further, we want to assert tha the title of the page is still the same although we triggered an empty search and our Page Object seems to be pointing to a different (logical) page.
+        1. Further, we want to assert that the title of the page is still the same although we triggered an empty search and our Page Object seems to be pointing to a different (logical) page.
 
-           ```csharp
-          [Then(@"the Page's title should be ""(.*)""")]
-          public void ThenThePageSTitleShouldBe(string expectedTitle)
-          {
-              ResultPage.Should().Be<BingSearchResultPage>(expectedTitle);
-          }
-           ```
+            ```csharp
+            [Then(@"the Page's title should be ""(.*)""")]
+            public void ThenThePageSTitleShouldBe(string expectedTitle)
+            {
+                ResultPage.Should().Be<BingSearchResultPage>(expectedTitle);
+            }
+            ```
 
-           - Let's implement the remaining assertions:
+        2. Let's implement the remaining assertions:
             ```csharp
             [Then(@"the URL should not contains ""(.*)""")]
             public void ThenTheURLShouldNotContains(string urlPath) { }
