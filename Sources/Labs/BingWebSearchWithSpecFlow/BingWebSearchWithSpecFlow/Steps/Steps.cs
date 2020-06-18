@@ -1,38 +1,35 @@
-﻿using BingWebSearchWithSpecFlow.Configuration;
-using BingWebSearchWithSpecFlow.Pages;
+﻿using BingWebSearchWithSpecFlow.Pages;
 using BoDi;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace BingWebSearchWithSpecFlow.Steps
 {
-    public class Specs : IDisposable
+    public class Steps : IDisposable
     {
         protected IObjectContainer Container { get; private set; }
 
 
         private readonly Func<IWebDriver> _webDriverFactory;
 
-        public Specs(IObjectContainer container, Func<IWebDriver> webDriverFactory)
+        public Steps(IObjectContainer container, Func<IWebDriver> webDriverFactory)
         {
             Container = container;
             _webDriverFactory = webDriverFactory;
         }
-        
+
 
         [BeforeScenario]
         public void RegisterDefaultBrowserFactory()
         {
-            Container.RegisterFactoryAs(BrowserFactory);
+            if (!Container.IsRegistered<IWebDriver>())
+            {
+                Container.RegisterFactoryAs(BrowserFactory);
+            }
         }
-        
+
 
         [AfterScenario]
         public void DisposeBrowser()
@@ -87,12 +84,12 @@ namespace BingWebSearchWithSpecFlow.Steps
 
         protected virtual void Dispose(bool disposing)
         {
-            
+
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                   
+
                     if (Container.IsRegistered<IWebDriver>())
                     {
                         var webDriver = Container.Resolve<IWebDriver>();

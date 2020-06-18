@@ -7,7 +7,7 @@ using BingWebSearchWithSpecFlow.Assertions;
 namespace BingWebSearchWithSpecFlow.Steps
 {
     [Binding]
-    public class WebBingSearchEngineTextSearchSteps : Specs
+    public class WebBingSearchEngineTextSearchSteps : Steps
     {
         public WebBingSearchEngineTextSearchSteps(IObjectContainer container) 
             : base(container, BrowserFactory.Chrome)
