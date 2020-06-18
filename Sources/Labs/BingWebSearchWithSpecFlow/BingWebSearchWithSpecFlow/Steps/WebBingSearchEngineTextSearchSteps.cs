@@ -72,9 +72,9 @@ namespace BingWebSearchWithSpecFlow.Steps
         }
         
         [Then(@"more than (.*) result\(s\) should be listed")]
-        public void ThenMoreThanOneResultsShouldBeListed(int minimumNumber)
+        public void ThenMoreThanOneResultsShouldBeListed(int minimumNumberResults)
         {
-            ResultPage.Should().HaveMoreThan(minimumNumber);
+            ResultPage.Should().HaveMoreThan(minimumNumberResults);
         }
 
         [Then(@"the (.*) result item's title and url should contain ""(.*)"" and ""(.*)""")]
@@ -82,8 +82,5 @@ namespace BingWebSearchWithSpecFlow.Steps
         {
             ResultPage.Should().HaveItemResult(index, new ResultItem(itemResultTitle, itemResultUrl));
         }
-
-
-
     }
 }
