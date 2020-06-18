@@ -233,7 +233,7 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
 
   #### Implementing a  ```Specflow Bing Search Scenario ```
 
-  1. Install SpecFlow Extension for Visusal Studio by navigating to  _**Extensions** > Manage Extensions_ from the menu bar. The window as below should appear 
+  1. Install SpecFlow Extension for Visusal Studio by navigating to  _**Extensions** > Manage Extensions_ from the menu bar. The window below should appear 
 
       ![](https://demosta.blob.core.windows.net/images/InstallSpecFlowExtension.PNG)
 
@@ -379,6 +379,6 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
       7. Finally we can build and run our test to validate our test scrips works. 
 
  
-
+          ![](https://demosta.blob.core.windows.net/images/AllSpecFlowTestsPass.PNG)
 
 
