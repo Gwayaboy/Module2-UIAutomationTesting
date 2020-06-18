@@ -107,7 +107,7 @@ We can just use notepad and everyone can share their scenarios on MS Teams meeti
 
    1. Ensure you have Chrome Web Browser on the machine your using for this exercise.    
       - You can [install Chrome here](https://www.google.com/chrome/)
-   2. Clone this repository to get started at ![https://github.com/Gwayaboy/Module2-UIAutomationTesting.git](https://github.com/Gwayaboy/Module2-UIAutomationTesting.git) following the instructions below:
+   2. Clone this repository to get started at [https://github.com/Gwayaboy/Module2-UIAutomationTesting.git](https://github.com/Gwayaboy/Module2-UIAutomationTesting.git) following the instructions below:
 
       ![](https://demosta.blob.core.windows.net/images/CloneRepoToGetStarted.png)
 
