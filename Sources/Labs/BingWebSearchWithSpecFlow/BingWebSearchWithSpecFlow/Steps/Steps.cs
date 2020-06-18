@@ -1,37 +1,35 @@
-﻿using BingWebSearchWithSpecFlow.Configuration;
-using BingWebSearchWithSpecFlow.Pages;
+﻿using BingWebSearchWithSpecFlow.Pages;
 using BoDi;
 using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
 namespace BingWebSearchWithSpecFlow.Steps
 {
-    public class Specs : IDisposable
+    public class Steps : IDisposable
     {
-        private IObjectContainer _container;
+        protected IObjectContainer Container { get; private set; }
+
+
         private readonly Func<IWebDriver> _webDriverFactory;
 
-        public Specs(IObjectContainer container, Func<IWebDriver> webDriverFactory)
+        public Steps(IObjectContainer container, Func<IWebDriver> webDriverFactory)
         {
-            _container = container;
+            Container = container;
             _webDriverFactory = webDriverFactory;
         }
-        
+
 
         [BeforeScenario]
         public void RegisterDefaultBrowserFactory()
         {
-            var webDriver = _webDriverFactory();
-            webDriver.Manage().Window.Maximize();
-            _container.RegisterFactoryAs(c => webDriver);
+            if (!Container.IsRegistered<IWebDriver>())
+            {
+                Container.RegisterFactoryAs(BrowserFactory);
+            }
         }
+
 
         [AfterScenario]
         public void DisposeBrowser()
@@ -39,9 +37,32 @@ namespace BingWebSearchWithSpecFlow.Steps
             Dispose();
         }
 
-        protected TPage NavigateTo<TPage>(string startUpUrl) where TPage : Page, new()
+        protected TPage NavigateToInitial<TPage>(string startUpUrl) where TPage : Page, new()
         {
-            return Page.GoToInitial<TPage>(startUpUrl, _container.Resolve<IWebDriver>());
+            return Register(Page.GoToInitial<TPage>(startUpUrl, Container.Resolve<IWebDriver>()));
+        }
+
+        protected TPage Register<TPage>(TPage page) where TPage : Page, new()
+        {
+            Container.RegisterInstanceAs(page);
+            return page;
+        }
+
+        protected TPage Retrieve<TPage>() where TPage : Page, new()
+        {
+            return Container.Resolve<TPage>();
+        }
+
+        protected void NotImplemented()
+        {
+            Container.Resolve<ScenarioContext>().Pending();
+        }
+
+        private IWebDriver BrowserFactory(IObjectContainer container)
+        {
+            var webDriver = _webDriverFactory();
+            webDriver.Manage().Window.Maximize();
+            return webDriver;
         }
 
         [StepArgumentTransformation]
@@ -63,15 +84,15 @@ namespace BingWebSearchWithSpecFlow.Steps
 
         protected virtual void Dispose(bool disposing)
         {
-            
+
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                   
-                    if (_container.IsRegistered<IWebDriver>())
+
+                    if (Container.IsRegistered<IWebDriver>())
                     {
-                        var webDriver = _container.Resolve<IWebDriver>();
+                        var webDriver = Container.Resolve<IWebDriver>();
                         webDriver.Quit();
                         webDriver.Dispose();
                     }

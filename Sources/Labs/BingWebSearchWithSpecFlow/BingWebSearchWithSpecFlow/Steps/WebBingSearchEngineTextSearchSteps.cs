@@ -11,20 +11,20 @@ using BingWebSearchWithSpecFlow.ViewModel;
 namespace BingWebSearchWithSpecFlow.Steps
 {
     [Binding]
-    public class WebBingSearchEngineTextSearchSteps : Specs
+    public class WebBingSearchEngineTextSearchSteps : Steps
     {
         public BingSearchPage SearchPage { get; private set; }
         public BingSearchResultPage ResultPage { get; private set; }
         public string CurrentLocation { get; private set; }
 
-        public WebBingSearchEngineTextSearchSteps(IObjectContainer container) : base(container, BrowserFactory.Chrome)
-        {
-        }
+        public WebBingSearchEngineTextSearchSteps(IObjectContainer container) 
+            : base(container, BrowserFactory.Chrome)
+        { }
 
         [Given(@"the user navigated to the url ""(.*)""")]
         public void GivenTheUserNavigatedToTheUrl(string url)
         {
-            SearchPage = NavigateTo<BingSearchPage>(url);
+            SearchPage = NavigateToInitial<BingSearchPage>(url);
         }
         
         [Given(@"the user typed ""(.*)""")]
@@ -38,14 +38,6 @@ namespace BingWebSearchWithSpecFlow.Steps
         {
             ResultPage = SearchPage.Search();
         }
-
-        [When(@"the user select the current pin location")]
-        public void WhenTheUserSelectTheCurrentPinLocation()
-        {
-            CurrentLocation = SearchPage.CurrentPinLocation;
-            ResultPage = SearchPage.SelectCurrentPinLocation();
-        }
-
 
         [Then(@"the the URL should remain ""(.*)""")]
         public void ThenTheTheURLShouldRemain(string url)
@@ -65,12 +57,7 @@ namespace BingWebSearchWithSpecFlow.Steps
             ResultPage.Should().Be<BingSearchResultPage>(expectedTitle);
         }
         
-        [Then(@"the results related to the background's image location should be listed")]
-        public void ThenTheResultsRelatedToTheBackgroundSImageLocationShouldBeListed()
-        {
-            ResultPage.Should().HaveMoreThan(1).And.SearchMatches(CurrentLocation);
-        }
-        
+       
         [Then(@"more than (.*) result\(s\) should be listed")]
         public void ThenMoreThanOneResultsShouldBeListed(int minimumNumberResults)
         {
