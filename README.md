@@ -276,7 +276,7 @@ Switch to the the [Finished](https://github.com/Gwayaboy/Module2-UIAutomationTes
       ```
      3. Build and run all tests from the TestExplorer and see Chrome browser start and stop for each and of the scenario, they should all fail for not being yet implementent
      
-     4. We have the necessary plumbing and Page Objects to start implementing the steps. Open the ```WebBingSearchEngineTextSearchSteps.cs``` step class:
+     4. We have the necessary plumbing and Page Objects to start implementing the steps. Open the ```WebBingSearchEngineTextSearchSteps.cs``` steps class:
         ```csharp
         [Binding]
         public class WebBingSearchEngineTextSearchSteps : Steps
