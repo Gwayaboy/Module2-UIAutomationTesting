@@ -25,9 +25,14 @@ namespace BingWebSearchWithSpecFlow.Pages
 
         public BingSearchResultPage Search(string textToSearch = "")
         {
+            return GoTo<BingSearchResultPage>(By.Id("sb_form"), form => form.Submit());
+        }
+
+        public BingSearchPage TypeSearchText(string textToSearch)
+        {
             FindElement(By.Id("sb_form_q")).SendKeys(textToSearch);
 
-            return GoTo<BingSearchResultPage>(By.Id("sb_form"), form => form.Submit());
+            return this;
         }
 
         public BingSearchResultPage SelectCurrentPinLocation()

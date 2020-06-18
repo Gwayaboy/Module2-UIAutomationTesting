@@ -23,7 +23,7 @@ namespace BingWebSearchWithSpecFlow.Pages
            where TPage : Page, new()
         {
             var action = performAction ?? (e => e.Click());
-            action(FindElement(byLocator));
+            action(WaitUntil(d => { var e = d.FindElement(byLocator); return e.Enabled && e.Displayed ? e : null; }));
 
             return new TPage { WebDriver = WebDriver };
         }
