@@ -7,6 +7,8 @@ using System;
 using TechTalk.SpecFlow;
 using BingWebSearchWithSpecFlow.Assertions;
 using BingWebSearchWithSpecFlow.ViewModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Gherkin.Ast;
 
 namespace BingWebSearchWithSpecFlow.Steps
 {
@@ -16,6 +18,8 @@ namespace BingWebSearchWithSpecFlow.Steps
         public BingSearchPage SearchPage { get; private set; }
         public BingSearchResultPage ResultPage { get; private set; }
         public string CurrentLocation { get; private set; }
+
+        
 
         public WebBingSearchEngineTextSearchSteps(IObjectContainer container) 
             : base(container, BrowserFactory.Chrome)

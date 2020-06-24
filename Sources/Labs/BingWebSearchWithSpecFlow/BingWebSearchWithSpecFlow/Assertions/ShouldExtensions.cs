@@ -8,7 +8,5 @@ namespace BingWebSearchWithSpecFlow.Assertions
         {
             return new BingSearchResultPageAssertions(page);
         }
-
-
     }
 }

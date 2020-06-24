@@ -3,6 +3,7 @@ using BingWebSearchWithSpecFlow.Configuration;
 using BingWebSearchWithSpecFlow.Pages;
 using BingWebSearchWithSpecFlow.ViewModel;
 using BoDi;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
 namespace BingWebSearchWithSpecFlow.Steps
@@ -28,7 +29,7 @@ namespace BingWebSearchWithSpecFlow.Steps
         [Then(@"the results related to the background's image location should be listed")]
         public void ThenTheResultsRelatedToTheBackgroundSImageLocationShouldBeListed()
         {
-            ResultPage.Should().HaveMoreThan(1).And.SearchMatches(CurrentLocation);
+            ResultPage.Should().SearchMatches(CurrentLocation).And.HaveMoreThan(1);
         }
 
        

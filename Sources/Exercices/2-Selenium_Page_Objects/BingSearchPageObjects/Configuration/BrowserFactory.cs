@@ -13,7 +13,7 @@ namespace BingSearchPageObjectsLab.Configuration
             var options = new ChromeOptions();
             options.AddArgument("test-type");
 
-            var directory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Directory.GetCurrentDirectory();
+            var directory = Directory.GetCurrentDirectory();
 
             return new ChromeDriver(directory, options);
         }

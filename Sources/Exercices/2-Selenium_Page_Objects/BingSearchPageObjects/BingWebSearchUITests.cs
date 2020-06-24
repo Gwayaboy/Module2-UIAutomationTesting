@@ -5,8 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BingSearchPageObjectsLab
 {
     [TestClass]
+    [TestCategory("Selenium")]
     public class BingWebSearchUITests : WebUISpecs
     {
+        [TestCategory("BingTextSearch")]
         [TestMethod]
         public void EmptySearchShouldNotTriggerAnySearch()
         {
@@ -21,6 +23,7 @@ namespace BingSearchPageObjectsLab
             Assert.IsFalse(returnedPage.Url.Contains("search?q="));
         }
 
+        [TestCategory("BingLocationSearch")]
         [TestMethod]
         public void SelectingTheLocationPinShouldSearchAndReturnSeveralResultsRelatedToLocation()
         {
@@ -36,7 +39,7 @@ namespace BingSearchPageObjectsLab
             Assert.AreEqual(currentLocation, returnedPage.SearchedText);
         }
 
-
+        [TestCategory("BingTextSearch")]
         [TestMethod]
         public void HelloWordSeachFirstResultShouldBeHelloWordProgram()
         {

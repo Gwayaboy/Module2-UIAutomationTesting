@@ -148,12 +148,12 @@ testRunner.Then("the the URL should remain \"https://www.bing.com/\"", ((string)
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Current Pin location search")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("\"Hello World\" Search Text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Web Bing Search engine text search")]
-        public virtual void CurrentPinLocationSearch()
+        public virtual void HelloWorldSearchText()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current Pin location search", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("\"Hello World\" Search Text", null, ((string[])(null)));
 #line 16
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -178,23 +178,33 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 18
-  testRunner.When("the user select the current pin location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.Given("the user typed \"Hello World!\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 19
-  testRunner.Then("the results related to the background\'s image location should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("the user submits the search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+  testRunner.Then("more than 1 result(s) should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 21
+    testRunner.And("the first result item\'s title and url should contain \"\"Hello, World!\" program - W" +
+                        "ikipedia\" and \"https://en.wikipedia.org/wiki/%22Hello,_World!%22_program\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("\"Hello World\" Search Text")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Current Pin location search")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Web Bing Search engine text search")]
-        public virtual void HelloWorldSearchText()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("location")]
+        public virtual void CurrentPinLocationSearch()
         {
-            string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("\"Hello World\" Search Text", null, ((string[])(null)));
-#line 22
+            string[] tagsOfScenario = new string[] {
+                    "location"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Current Pin location search", null, new string[] {
+                        "location"});
+#line 24
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -217,18 +227,11 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 24
-  testRunner.Given("the user typed \"Hello World!\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 25
-  testRunner.When("the user submits the search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 26
-  testRunner.Then("more than 1 result(s) should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.When("the user select the current pin location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 27
-    testRunner.And("the 1st result item\'s title and url should contain \"\"Hello, World!\" program - Wik" +
-                        "ipedia\" and \"https://en.wikipedia.org/wiki/%22Hello,_World!%22_program\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.Then("the results related to the background\'s image location should be listed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

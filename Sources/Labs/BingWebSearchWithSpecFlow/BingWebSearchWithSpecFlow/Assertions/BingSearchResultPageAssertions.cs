@@ -23,7 +23,7 @@ namespace BingWebSearchWithSpecFlow.Assertions
             Execute
                .Assertion
                .ForCondition(actualNumberOfResults > minimumOfResults)
-               .FailWith($"Expected to have more than{minimumOfResults}, but found {actualNumberOfResults} results");
+               .FailWith($"Expected to have more than {minimumOfResults} in the page, but found {actualNumberOfResults} results");
 
             return new AndConstraint<BingSearchResultPageAssertions>(this);
         }

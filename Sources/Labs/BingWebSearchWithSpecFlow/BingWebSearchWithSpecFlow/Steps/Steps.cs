@@ -30,7 +30,6 @@ namespace BingWebSearchWithSpecFlow.Steps
             }
         }
 
-
         [AfterScenario]
         public void DisposeBrowser()
         {
