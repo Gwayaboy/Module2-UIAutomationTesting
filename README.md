@@ -28,7 +28,7 @@ Please [view and download ](https://github.com/Gwayaboy/Module2-UIAutomationTest
 
 This exercise doesn't require to install SpecFlow extension or Visual Studio. The outcome is to learn how to write scenarios that focus on functionality rather than UI.
 We can just use notepad and everyone can share their scenarios on MS Teams meeting chat
-![MS Team Chat Gherkin scenario](https://demosta.blob.core.windows.net/images/MSTeamChatGherkin.PNG)
+
 1. An example scenario looks as follow:
     ```Gherkin
       Feature: Pascal's calculator can perform arithmetic operations
